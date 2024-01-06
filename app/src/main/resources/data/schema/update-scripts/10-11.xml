@@ -1,0 +1,61 @@
+<update-script from="10" to="11">
+
+  <item>
+    <log>Add the asset table</log>
+    <sql>
+CREATE TABLE asset
+(
+    dbkey BIGINT NOT NULL,
+    PRIMARY KEY (dbkey)
+)
+    </sql>
+  </item>
+
+  <item>
+    <log>Add the userobjecttypedbkey to namedobject.  It references projectinfo.userobjecttype.dbkey so can't foreign key constrain.</log>
+    <sql>
+ALTER TABLE namedobject ADD userobjecttypedbkey BIGINT              
+    </sql>
+  </item>
+
+  <item>
+    <log>Create foreign key constraint for asset(dbkey)/namedobject(dbkey).</log>
+    <sql>
+ALTER TABLE asset ADD CONSTRAINT asset_dbkey___namedobject_dbkey_fk FOREIGN KEY(dbkey) REFERENCES namedobject(dbkey)
+    </sql>
+  </item>
+
+  <item>
+    <log>Add the user object field table</log>
+    <sql>
+CREATE TABLE userobjectfield
+(
+    dbkey BIGINT NOT NULL,
+    namedobjectdbkey BIGINT NOT NULL,
+    -- This references userobjecttypefield.dbkey in the project info schema so we can't foreign key constrain.
+    userobjecttypefielddbkey BIGINT NOT NULL,
+    value CLOB,
+    PRIMARY KEY (dbkey)
+)
+    </sql>
+  </item>
+
+  <item>
+    <log>Create foreign key constraint for userobjectfield(dbkey)/namedobject(dbkey).</log>
+    <sql>
+ALTER TABLE userobjectfield ADD CONSTRAINT userobjfield_dbkey___namedobject_dbkey_fk FOREIGN KEY(dbkey) REFERENCES namedobject(dbkey)
+    </sql>
+  </item>
+
+  <item>
+    <!--
+      We reference namedobject.dbkey here rather than userobject.dbkey since there are existing objects that may not be added
+      to userobject, for example characters.
+    -->
+    <log>Create foreign key constraint for userobjectfield(userobjectdbkey)/namedobject(dbkey).</log>
+    <sql>
+ALTER TABLE userobjectfield ADD CONSTRAINT userobjfield_userobjdbkey___namedobject_dbkey_fk FOREIGN KEY(namedobjectdbkey) REFERENCES namedobject(dbkey)
+    </sql>
+  </item>
+
+</update-script>

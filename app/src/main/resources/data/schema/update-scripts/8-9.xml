@@ -1,0 +1,106 @@
+<update-script from="8" to="9">
+  <item>
+    <log>Add the version to dataobject.</log>
+    <sql>
+ALTER TABLE dataobject ADD version UUID DEFAULT RANDOM_UUID()
+    </sql>
+  </item>
+    
+  <item>
+    <log>Add the latest flag to a dataobject.</log>
+    <sql>
+ALTER TABLE dataobject ADD latest BOOLEAN DEFAULT TRUE
+    </sql>
+  </item>
+
+  <item>
+    <log>Add the id to the dataobject.</log>
+    <sql>
+ALTER TABLE dataobject ADD id UUID DEFAULT RANDOM_UUID()
+    </sql>
+  </item>
+  
+  <item>
+    <log>Add the dealtwith to the note.</log>
+    <sql>
+ALTER TABLE note ADD dealtwith TIMESTAMP
+    </sql>
+  </item>
+
+  <item>
+    <log>Add a unique constraint on the id/version dataobject.</log>
+    <sql>
+ALTER TABLE dataobject ADD CONSTRAINT dataobject_idversion_uk UNIQUE(id, version)
+    </sql>
+  </item>
+
+  <item>
+    <log>Add the version to the note.</log>
+    <sql>
+ALTER TABLE note ADD objectversion UUID 
+    </sql>
+  </item>
+
+  <item>
+    <log>Init the note.objectversion.</log>
+    <sql>
+  UPDATE note n
+  SET    objectversion = (SELECT version FROM dataobject WHERE dbkey = objectdbkey);
+    </sql>
+  </item>
+  
+  <item>
+    <log>Make the objectversion mandatory for the note table.</log>
+    <sql>
+ALTER TABLE note MODIFY objectversion UUID NOT NULL
+    </sql>
+  </item>
+
+  <item>
+    <log>Create foreign key constraint for note.dbkey/objectversion - dataobject.dbkey/version.</log>
+    <sql>
+ALTER TABLE note ADD CONSTRAINT note_objectdbkeyversion_dataobject_dbkeyversion_fk FOREIGN KEY(objectdbkey, objectversion) REFERENCES dataobject(dbkey, version)
+    </sql>
+  </item>
+  
+  <item>
+    <log>Create the projectversion table.</log>
+    <sql>
+CREATE TABLE projectversion
+(
+    dbkey BIGINT NOT NULL,
+    due TIMESTAMP,
+    PRIMARY KEY (dbkey)
+)
+    </sql>
+  </item>
+
+  <item>
+    <log>Create foreign key constraint for projectversion(dbkey)/namedobject(dbkey).</log>
+    <sql>
+ALTER TABLE projectversion ADD CONSTRAINT projver_dbkey_namedobject_fk FOREIGN KEY(dbkey) REFERENCES namedobject(dbkey)
+    </sql>
+  </item>
+  
+  <item>
+    <log>Add the version to the note.</log>
+    <sql>
+ALTER TABLE chapter ADD projectversiondbkey BIGINT
+    </sql>
+  </item>
+  
+  <item>
+    <log>Create foreign key constraint for chapter(projectversiondbkey)/projectversion(dbkey).</log>
+    <sql>
+ALTER TABLE chapter ADD CONSTRAINT chapter_projverdbkey_projver_fk FOREIGN KEY(projectversiondbkey) REFERENCES projectversion(dbkey)
+    </sql>
+  </item>
+  
+  <item>
+    <log>Add the issue id to the problemfinderignore table.</log>
+    <sql>
+ALTER TABLE problemfinderignore ADD issueid CLOB
+    </sql>
+  </item>
+  
+</update-script>
