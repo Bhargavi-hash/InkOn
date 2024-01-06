@@ -1,4 +1,3 @@
-# InkOn
+# InkON
 
-A novel writing application built using java with gradle.
-v1.0.0
+A novel writing application using java with gradle. v1.0.0
