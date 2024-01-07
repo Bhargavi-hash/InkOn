@@ -9,7 +9,7 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'org.openjfx.javafxplugin' version '0.1.0' // Older vesions of Gradle may need to use version 0.0.10
 }
 
 
@@ -22,7 +22,7 @@ sourceSets {
 
 javafx {
     version = "17"
-    modules = [ 'javafx.swing', 'javafx.controls', 'javafx.media', 'javafx.web']
+    modules = [ 'javafx.swing', 'javafx.controls', 'javafx.media', 'javafx.web', 'javafx.fxml']
     configuration = 'compileOnly'
 }
 
@@ -158,7 +158,9 @@ dependencies {
     // JavaFX
     implementation "org.openjfx:javafx-controls:${javafx.version}"
     implementation "org.openjfx:javafx-media:${javafx.version}"
-
+    implementation "org.openjfx:javafx-web:${javafx.version}"
+    implementation "org.openjfx:javafx-swing:${javafx.version}"
+    implementation "org.openjfx:javafx-fxml:${javafx.version}"
 }
 
 jar {
