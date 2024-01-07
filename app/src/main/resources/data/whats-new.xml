@@ -321,7 +321,7 @@
 
   </version>
 
-  <version id="2.2" class="com.quollwriter.ui.whatsnewcomps.version_2_2">
+  <version id="2.2" class="inkon.ui.whatsnewcomps.version_2_2">
     <item id="errors">
       <title>Sometimes things go wrong</title>
       <description>Quoll Writer isn't perfect and while I try to make it error free sometimes things cluck up.  When they do it would be helpful for Quoll Writer to send a report back to me to let me know what the problem is and I get on with fixing it.  Please check the box below to enable this feature.  It helps you and it helps me.</description>
@@ -424,7 +424,7 @@
     </item>
   </version>
 
-  <version id="1.4.4" class="com.quollwriter.ui.whatsnewcomps.version_1_4_4">
+  <version id="1.4.4" class="inkon.ui.whatsnewcomps.version_1_4_4">
     <item onlyIfCurrentVersion="true">
       <title>Usability improvements</title>
       <description><![CDATA[Over 50 usability improvements and bug fixes have been made in this version including the ability to manage your personal dictionary, item and note types and much more.  For details see the <a href='help:version-changes/1_4_4'>full list of changes online</a>.]]></description>

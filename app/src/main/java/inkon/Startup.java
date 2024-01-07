@@ -193,7 +193,7 @@ public class Startup extends Application
 
                 } else {
 
-                    Environment.logError ("Unable to open Quoll Writer",
+                    Environment.logError ("Unable to open InkOn",
                                           eee);
 
                     ComponentUtils.showErrorMessage (getUILanguageStringProperty (startup,unabletostarterror));

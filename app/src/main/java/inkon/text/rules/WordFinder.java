@@ -97,12 +97,12 @@ public class WordFinder extends AbstractDialogueRule
     public String getEditFormTitle (boolean add)
     {
 
-        return (add ? Environment.getUIString (LanguageStrings.problemfinder,
+        return (add ? UILanguageStringsManager.getUIString (LanguageStrings.problemfinder,
                                                LanguageStrings.config,
                                                LanguageStrings.rules,
                                                LanguageStrings.wordfinder,
                                                LanguageStrings.addtitle)
-                    : Environment.getUIString (LanguageStrings.problemfinder,
+                    : UILanguageStringsManager.getUIString (LanguageStrings.problemfinder,
                                                LanguageStrings.config,
                                                LanguageStrings.rules,
                                                LanguageStrings.wordfinder,
@@ -125,17 +125,17 @@ public class WordFinder extends AbstractDialogueRule
             pref.add (LanguageStrings.wordfinder);
             pref.add (LanguageStrings.description);
 
-            String s = (this.ignoreInDialogue ? Environment.getUIString (pref,
+            String s = (this.ignoreInDialogue ? UILanguageStringsManager.getUIString (pref,
                                                                          LanguageStrings.suffixes,
                                                                          LanguageStrings.ignoreindialogue) :
-                                                Environment.getUIString (pref,
+                                                UILanguageStringsManager.getUIString (pref,
                                                                          LanguageStrings.suffixes,
                                                                          LanguageStrings.onlyindialogue));
 
             if (this.where.equals (DialogueConstraints.ANYWHERE))
             {
 
-                suffix = String.format (Environment.getUIString (pref,
+                suffix = String.format (UILanguageStringsManager.getUIString (pref,
                                                                  LanguageStrings.anywhere),
                                         s);
                 //"anywhere in a sentence";
@@ -143,7 +143,7 @@ public class WordFinder extends AbstractDialogueRule
             } else
             {
 
-                suffix = String.format (Environment.getUIString (pref,
+                suffix = String.format (UILanguageStringsManager.getUIString (pref,
                                                                  LanguageStrings.insentence),
                                         //"at the %s of a sentence",
                                         this.where,
@@ -247,7 +247,7 @@ public class WordFinder extends AbstractDialogueRule
                 if (this.onlyInDialogue)
                 {
 
-                    suffix = Environment.getUIString (pref,
+                    suffix = UILanguageStringsManager.getUIString (pref,
                                                       LanguageStrings.suffixes,
                                                       LanguageStrings.onlyindialogue);
                                                       //" (in dialogue)";
@@ -260,13 +260,13 @@ public class WordFinder extends AbstractDialogueRule
                     if (this.onlyInDialogue)
                     {
 
-                        suffix = Environment.getUIString (pref,
+                        suffix = UILanguageStringsManager.getUIString (pref,
                                                           LanguageStrings.suffixes,
                                                           LanguageStrings.indialogue);
 
                     } else {
 
-                        suffix = Environment.getUIString (pref,
+                        suffix = UILanguageStringsManager.getUIString (pref,
                                                           LanguageStrings.suffixes,
                                                           LanguageStrings.notindialogue);
 
@@ -277,7 +277,7 @@ public class WordFinder extends AbstractDialogueRule
 
                 }
 
-                Issue iss = new Issue (String.format (Environment.getUIString (pref,
+                Issue iss = new Issue (String.format (UILanguageStringsManager.getUIString (pref,
                                                                                LanguageStrings.text),
                                                       this.word,
                                                       suffix),

@@ -11,7 +11,7 @@
 .root
 {
 
-    -qw-bg-color: #fdfdfd;
+    -qw-bg-color: white;
 
     /*
      * The dark color.  Generally used for borders and drop shadows as well as solid colors.
@@ -47,7 +47,8 @@
     /**
      * The color of borders around components.
      */
-    -qw-border-color: -qw-dark-color;
+    -qw-border-color: none;
+    -qw-border-radius: 20px;
 
     -qw-component-border-color: #aaaaaa;
 
@@ -77,7 +78,7 @@
     /*
      * The standard drop shadow.
      */
-    -qw-drop-shadow: dropshadow(gaussian, -qw-component-border-color, 1.5em, 0.3, 0, 0);
+    -qw-drop-shadow: dropshadow( three-pass-box , darkgrey , 5, 0.0 , 0 , 1 );
 
     /*
      * The popup width.
@@ -2289,7 +2290,7 @@ Text
 }
 */
 /*
- * com.quollwriter.ui.fx.ProblemFinder
+ * inkon.ui.fx.ProblemFinder
  */
  /* TODO Fix this, causes issue with chapter right click menu */
 /*

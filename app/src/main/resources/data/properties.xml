@@ -286,12 +286,12 @@ Removed so that the full screen properties will inherit from the standard editor
 -->
   <property id="quollWriterUpdaterClassName" type="string">
     <description>The class that will check for updates.</description>
-    <value>com.quollwriter.ui.fx.DefaultQuollWriterUpdater</value>
+    <value>inkon.ui.fx.DefaultQuollWriterUpdater</value>
   </property>
 
   <property id="synonymProviderClass" type="string">
     <description>The synonym provider.</description>
-    <value>com.quollwriter.synonyms.providers.BuiltInSynonymProvider</value>
+    <value>inkon.synonyms.providers.BuiltInSynonymProvider</value>
   </property>
 
   <property id="thesaurusFileName" type="string">

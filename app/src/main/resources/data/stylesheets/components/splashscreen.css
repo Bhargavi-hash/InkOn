@@ -1,5 +1,5 @@
 /*
- * Styles for com.quollwriter.ui.fx.components.Splashscreen
+ * Styles for inkon.ui.fx.components.Splashscreen
  */
 .splashscreen {
     -fx-border-color: -qw-border-color;
@@ -13,4 +13,4 @@
     -fx-pref-width: 500px;
     -fx-max-width: 500px;
  }
-.progress-bar .bar { -fx-background-color: #4d4d4d; }
+.progress-bar .bar { -fx-background-color: green; }

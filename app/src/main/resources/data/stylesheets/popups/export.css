@@ -1,5 +1,5 @@
 /*
- * Styles for com.quollwriter.ui.fx.popups.ExportProjectPopup
+ * Styles for inkon.ui.fx.popups.ExportProjectPopup
  */
 .qpopup.export .header .icon { -fx-image: url(/imgs/project-export16.png); }
 .content {

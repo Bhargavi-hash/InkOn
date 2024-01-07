@@ -24,6 +24,7 @@ import inkon.ui.forms.*;
 
 import inkon.ui.fx.*;
 import inkon.ui.fx.components.Form;
+import inkon.uistrings.UILanguageStringsManager;
 import inkon.ui.fx.components.*;
 
 import org.dom4j.*;
@@ -185,7 +186,7 @@ public class AdverbRule extends AbstractSentenceRule
                                 // Maybe check to see if it's after a "
 
                                 // Add an issue.
-                                Issue iss = new Issue (String.format (Environment.getUIString (LanguageStrings.problemfinder,
+                                Issue iss = new Issue (String.format (UILanguageStringsManager.getUIString (LanguageStrings.problemfinder,
                                                                                                LanguageStrings.issues,
                                                                                                LanguageStrings.adverb,
                                                                                                LanguageStrings.text),
@@ -378,14 +379,14 @@ public class AdverbRule extends AbstractSentenceRule
 
         b.add (newVerbs);
 
-        JLabel label = new JLabel (Environment.getUIString (pref,
+        JLabel label = new JLabel (UILanguageStringsManager.getUIString (pref,
                                                                 LanguageStrings.separate));
                                    //"(separate with , or ;)");
         label.setBorder (inkon.ui.UIUtils.createPadding (0, 5, 0, 0));
 
         b.add (label);
 
-        items.add (new AnyFormItem (Environment.getUIString (pref,
+        items.add (new AnyFormItem (UILanguageStringsManager.getUIString (pref,
                                                              LanguageStrings.newspeechverbs),
                                     //"New Speech Verbs",
                                     b));
@@ -420,7 +421,7 @@ public class AdverbRule extends AbstractSentenceRule
 
         buts.add (inkon.ui.UIUtils.createButton (Constants.DELETE_ICON_NAME,
                                         Constants.ICON_MENU,
-                                        Environment.getUIString (LanguageStrings.problemfinder,
+                                        UILanguageStringsManager.getUIString (LanguageStrings.problemfinder,
                                                                  LanguageStrings.config,
                                                                  LanguageStrings.rules,
                                                                  LanguageStrings.adverb,
@@ -496,7 +497,7 @@ public class AdverbRule extends AbstractSentenceRule
         b.add (bb);
         b.add (Box.createHorizontalGlue ());
 
-        items.add (new AnyFormItem (Environment.getUIString (pref,
+        items.add (new AnyFormItem (UILanguageStringsManager.getUIString (pref,
                                                              LanguageStrings.speechverbs),
                                     //"Speech Verbs",
                                     b));

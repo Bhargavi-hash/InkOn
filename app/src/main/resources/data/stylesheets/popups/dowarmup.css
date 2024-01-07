@@ -1,5 +1,5 @@
 /*
- * Styles for com.quollwriter.ui.fx.popups.DoWarmupExercisePopup
+ * Styles for inkon.ui.fx.popups.DoWarmupExercisePopup
  */
 /*.dowarmup .header .icon { -fx-image: url(/imgs/warmups16.png); }*/
 .content .header .icon { visibility: false; }
