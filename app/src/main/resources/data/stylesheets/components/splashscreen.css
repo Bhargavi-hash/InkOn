@@ -7,7 +7,7 @@
     -fx-border-width: 1;
     -fx-background-color: transparent;
 }
-.image.image-view { -fx-image: url(/imgs/q-app-logo.png); }
+.image.image-view { -fx-image: url(/imgs/Inkon_logo.png); }
 .progress-bar {
     -fx-min-width: 500px;
     -fx-pref-width: 500px;

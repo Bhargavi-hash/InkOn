@@ -3,28 +3,21 @@ package inkon;
 import java.nio.channels.*;
 
 import java.io.*;
-import javax.imageio.*;
 import java.net.*;
 
 import java.time.*;
 import java.time.format.*;
-import java.time.temporal.*;
 import java.text.*;
 import java.util.*;
 import java.util.function.*;
 import java.nio.file.*;
-import java.nio.file.attribute.*;
 import java.nio.charset.*;
-import java.util.stream.*;
 import java.util.concurrent.*;
 import java.util.logging.*;
-import java.security.*;
-
 import javafx.beans.value.*;
 import javafx.collections.*;
 import javafx.scene.text.*;
 import javafx.beans.property.*;
-import javafx.scene.media.*;
 import javafx.application.*;
 import javafx.scene.image.*;
 import javafx.scene.input.*;
@@ -34,7 +27,6 @@ import org.dom4j.*;
 import org.dom4j.tree.*;
 
 import inkon.achievements.*;
-import inkon.achievements.rules.*;
 import inkon.db.*;
 import inkon.data.*;
 import inkon.data.comparators.*;
@@ -46,7 +38,6 @@ import inkon.importer.*;
 import inkon.ui.fx.*;
 import inkon.ui.fx.viewers.*;
 import inkon.ui.fx.components.*;
-import inkon.events.ProjectInfoChangedEvent;
 import inkon.ui.fx.swing.QTextEditor;
 import inkon.editors.ui.*;
 
@@ -84,7 +75,7 @@ public class Environment
     private static boolean isFirstUse = false;
 
     private static long userStyleSheetLastModified = 0;
-    private static ScheduledFuture userStyleSheetModifiedChecker = null;
+    private static ScheduledFuture<Void> userStyleSheetModifiedChecker = null;
 
     private static DecimalFormat numFormat = new DecimalFormat ("###,###");
     private static DecimalFormat floatNumFormat = new DecimalFormat ("###,###.#");
@@ -147,7 +138,7 @@ public class Environment
 
     private static List<Runnable> doOnShutdown = new ArrayList<> ();
 
-    private static ScheduledFuture autoNightModeSchedule = null;
+    private static ScheduledFuture<Void> autoNightModeSchedule = null;
 
     static
     {
@@ -159,7 +150,7 @@ public class Environment
         // Where possible listeners should de-register as normal but this just ensure that objects
         // that don't have a controlled pre-defined lifecycle (as opposed say to AbstractSideBar)
         // won't leak.
-        Environment.userProjectEventListeners = Collections.synchronizedMap (new WeakHashMap ());
+        Environment.userProjectEventListeners = Collections.synchronizedMap (new WeakHashMap<ProjectEventListener, Object> ());
 
         try
         {
@@ -332,7 +323,15 @@ public class Environment
         Environment.dateFormatter = new SimpleDateFormat ("d MMM yyyy");
         Environment.timeFormatter = new SimpleDateFormat ("HH:mm");
 
-        Environment.appVersion = new Version (Utils.getResourceFileAsString (Constants.VERSION_FILE).trim ());
+        try {
+                
+                Environment.appVersion = new Version (Utils.getResourceFileAsString (Constants.VERSION_FILE).trim ());
+    
+            } catch (Exception e) {
+    
+                Environment.logError ("Unable to get app version",
+                                    e);
+        }
 
         try
         {

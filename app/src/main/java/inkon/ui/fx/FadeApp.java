@@ -22,7 +22,7 @@ public class FadeApp extends Application {
     public static final String APPLICATION_ICON =
             "http://cdn1.iconfinder.com/data/icons/Copenhagen/PNG/32/people.png";
     public static final String SPLASH_IMAGE =
-            "http://fxexperience.com/wp-content/uploads/2010/06/logo.png";
+            "../../resources/images/Inkon_logo.png";
 
     private Pane splashLayout;
     private ProgressBar loadProgress;
